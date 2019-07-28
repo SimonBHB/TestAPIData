@@ -1,5 +1,3 @@
-package fr.simonbhb.animatedmagic.Utils.MyKeys;
-
 import com.flowpowered.math.vector.Vector3d;
 import org.spongepowered.api.Sponge;
 import org.spongepowered.api.block.BlockState;
@@ -19,9 +17,6 @@ import org.spongepowered.api.data.value.mutable.Value;
 
 import java.util.Optional;
 
-// Example of singular data
-// Example of single-class layout
-// Example of non-persistent data
 public class MyVector3dData extends AbstractSingleData<Vector3d, MyVector3dData, MyVector3dData.Immutable> {
 
     public MyVector3dData(Vector3d value, Key<? extends Value<Vector3d>> usedKey) {
