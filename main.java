@@ -64,15 +64,6 @@ public class main {
                 .immutableClass(MyVector3dData.Immutable.class)
                 .builder(new MyVector3dData.Builder())
                 .build();
-
-        DataRegistration.builder()
-                .id("standarddata_id")
-                .name("StandardDataSav")
-                .dataClass(MyStandardData.class)
-                .dataImplementation(MyStandardData.class)
-                .immutableClass(MyImmutableStandardData.class)
-                .immutableImplementation(MyImmutableStandardData.class)
-                .builder(new MyStandardDataBuilder());
     }
 
         /**
