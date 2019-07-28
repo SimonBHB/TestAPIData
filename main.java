@@ -1,3 +1,4 @@
+import com.flowpowered.math.vector.Vector3d;
 import com.google.inject.Inject;
 import fr.simonbhb.animatedmagic.Event.EventLoader;
 import fr.simonbhb.animatedmagic.Task.TaskLoader;
@@ -19,7 +20,7 @@ import org.spongepowered.api.plugin.PluginContainer;
 import java.io.IOException;
 import java.nio.file.Path;
 
-@Plugin(id = "tool", name = "Tool", description = "tool" )
+@Plugin(id = "animatedmagic", name = "AnimatedMagic", description = "AnimatedMagic le plugin magique", url = "simonbhb.fr", authors = { "SimonBHB" } )
 public class main {
 
     @Inject
@@ -40,6 +41,17 @@ public class main {
     private Path configDir2;
 
     @Listener
+    public void GameRegistryCraftingRecipe(GameRegistryEvent.Register<org.spongepowered.api.item.recipe.crafting.CraftingRecipe> event) {
+        logger.info("--");
+        logger.info("");
+        logger.info("GameRegistryEvent.Register<org.spongepowered.api.item.recipe.crafting.CraftingRecipe>!!!");
+        logger.info("");
+        logger.info("--");
+        AnimationCraft.createCraft(event);
+        logger.info("");
+    }
+
+    @Listener
     public void GameRegistryEventRegisterKey(GameRegistryEvent.Register<Key<?>> event) {
         logger.info("--");
         logger.info("");
@@ -49,6 +61,8 @@ public class main {
         event.register(ToolKeys.VECTOR3D);
     }
 
+
+
     @Listener
     public void GamePreInitialization(GamePreInitializationEvent event) throws IOException {
         logger.info("--");
@@ -57,20 +71,21 @@ public class main {
         logger.info("");
         logger.info("--");
 
-        new Tool(this, container, game, logger, configDir); // Obligatoire
+        DataRegistration.builder()
+                .id("vector3d_id")
+                .name("Vector3dSav")
+                .dataClass(MyVector3dData.class)
+                .immutableClass(MyVector3dData.Immutable.class)
+                .builder(new MyVector3dData.Builder())
+                .build();
 
         DataRegistration.builder()
-                .id("standard_data") // prefix is added for you and you can't add it yourself
-                .name("My Standard Data")
+                .id("standarddata_id")
+                .name("StandardDataSav")
                 .dataClass(MyStandardData.class)
+                .dataImplementation(MyStandardData.class)
                 .immutableClass(MyImmutableStandardData.class)
-                .builder(new MyStandardDataBuilder());
-
-        DataRegistration.builder()
-                .id("standard_data") // prefix is added for you and you can't add it yourself
-                .name("My Standard Data")
-                .dataClass(MyStandardData.class)
-                .immutableClass(MyImmutableStandardData.class)
+                .immutableImplementation(MyImmutableStandardData.class)
                 .builder(new MyStandardDataBuilder());
     }
 
@@ -84,7 +99,6 @@ public class main {
         Tool.getLoggerBarre("");
         Tool.getLogger().info(" ");
         logger.info("GameStartedServerEvent!!!");
-        Tool.getLogger().info(" ");
     }
 
 }
