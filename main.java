@@ -85,6 +85,8 @@ public class main {
         Tool.getLoggerBarre("");
         Tool.getLogger().info(" ");
         logger.info("GameStartedServerEvent!!!");
+        
+        Tool.getGame().getEventManager().registerListeners(this, new EventLoader());
     }
 
 }
