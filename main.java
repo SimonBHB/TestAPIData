@@ -1,9 +1,5 @@
 import com.flowpowered.math.vector.Vector3d;
 import com.google.inject.Inject;
-import fr.simonbhb.animatedmagic.Event.EventLoader;
-import fr.simonbhb.animatedmagic.Task.TaskLoader;
-import fr.simonbhb.animatedmagic.Utils.Animation.AnimationCraft;
-import fr.simonbhb.animatedmagic.Utils.MyKeys.*;
 import org.slf4j.Logger;
 import org.spongepowered.api.Game;
 import org.spongepowered.api.Sponge;
@@ -20,7 +16,7 @@ import org.spongepowered.api.plugin.PluginContainer;
 import java.io.IOException;
 import java.nio.file.Path;
 
-@Plugin(id = "animatedmagic", name = "AnimatedMagic", description = "AnimatedMagic le plugin magique", url = "simonbhb.fr", authors = { "SimonBHB" } )
+@Plugin(id = "plugin", name = "plugin", description = "plugin" )
 public class main {
 
     @Inject
@@ -40,16 +36,6 @@ public class main {
     @DefaultConfig(sharedRoot = true)
     private Path configDir2;
 
-    @Listener
-    public void GameRegistryCraftingRecipe(GameRegistryEvent.Register<org.spongepowered.api.item.recipe.crafting.CraftingRecipe> event) {
-        logger.info("--");
-        logger.info("");
-        logger.info("GameRegistryEvent.Register<org.spongepowered.api.item.recipe.crafting.CraftingRecipe>!!!");
-        logger.info("");
-        logger.info("--");
-        AnimationCraft.createCraft(event);
-        logger.info("");
-    }
 
     @Listener
     public void GameRegistryEventRegisterKey(GameRegistryEvent.Register<Key<?>> event) {
