@@ -1,5 +1,3 @@
-package fr.simonbhb.animatedmagic.Utils.MyKeys;
-
 import com.flowpowered.math.vector.Vector3d;
 import org.spongepowered.api.Sponge;
 import org.spongepowered.api.data.DataContainer;
