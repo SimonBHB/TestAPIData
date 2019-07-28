@@ -10,9 +10,6 @@ import org.spongepowered.api.world.biome.BiomeType;
 import java.util.UUID;
 
 public class ToolKeys {
-    public ToolKeys() {}
-//    public static void dummy() {} // invoke static constructor
-
     public static final Key<Value<UUID>> STANDARD_ID;
     public static final Key<Value<String>> STANDARD_NAME;
 
